@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC Clone</title>
+    <style>
+        /* Reset and Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Color Scheme */
+        :root {
+            --primary-blue: #1E90FF;
+            --secondary-gold: #FFD700;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 85%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header */
+        .header {
+            background: var(--primary-blue);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .header nav ul li {
+            margin-left: 1rem;
+        }
+
+        .header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .header nav ul li a:hover {
+            background-color: var(--secondary-gold);
+            color: var(--dark-gray);
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://picsum.photos/1200/500') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Booking Form */
+        .booking-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-form input[type="text"],
+        .booking-form input[type="date"],
+        .booking-form select {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .booking-form button {
+            background-color: var(--secondary-gold);
+            color: var(--dark-gray);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .booking-form button:hover {
+            background-color: var(--primary-blue);
+            color: #fff;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 3rem 0;
+            background: var(--light-gray);
+        }
+
+        .features .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-box i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-gray);
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--secondary-gold);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+            }
+
+            .header nav ul {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .header nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .booking-form {
+                flex-direction: column;
+            }
+
+            .booking-form input[type="text"],
+            .booking-form input[type="date"],
+            .booking-form select,
+            .booking-form button {
+                max-width: none;
+            }
+        }
+    </style>
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">IRCTC Clone</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Book Tickets</a></li>
+                    <li><a href="#">My Bookings</a></li>
+                    <li><a href="#">Offers</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to IRCTC Clone</h1>
+            <p>Book your train tickets with ease and convenience.</p>
+            <!-- Booking Form -->
+            <form class="booking-form">
+                <input type="text" placeholder="From Station">
+                <input type="text" placeholder="To Station">
+                <input type="date">
+                <select>
+                    <option>All Classes</option>
+                    <option>AC First Class</option>
+                    <option>AC 2 Tier</option>
+                    <option>AC 3 Tier</option>
+                    <option>Sleeper</option>
+                </select>
+                <button type="button" onclick="searchTrains()">Search Trains</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-box">
+                <i class="fas fa-ticket-alt"></i>
+                <h3>Easy Booking</h3>
+                <p>Book your tickets quickly and easily.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-bell"></i>
+                <h3>Real-time Updates</h3>
+                <p>Get real-time updates on your train status.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>Our support team is available 24/7 to assist you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <div class="footer-links">
+                <a href="#">FAQs</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <p>&copy; 2023 IRCTC Clone. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function searchTrains() {
+            alert('Searching for trains...');
+            // Add your train search logic here
+        }
+    </script>
+</body>
+
+</html>
